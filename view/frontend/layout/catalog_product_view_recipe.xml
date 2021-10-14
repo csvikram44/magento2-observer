@@ -7,6 +7,24 @@
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-        <referenceBlock name="breadcrumbs" remove="true"/>
+        <referenceContainer name="content">
+            <container name="product.recipe.container" htmlTag="div" htmlClass="product-recipe" before="-">
+                <container name="product.recipe.left" htmlTag="div" htmlClass="product-recipe-left" />
+                <container name="product.recipe.right" htmlTag="div" htmlClass="product-recipe-right">
+                    <block class="Magento\Catalog\Block\Product\View" name="product.recipe.ingredients" template="Magento360_Recipe::product/view/ingredients.phtml" />
+                </container>
+            </container>
+            <container name="product.recipe.bottom" htmlTag="div" htmlClass="product-recipe-bottom">
+                <container name="product.recipe.review" htmlTag="div" htmlClass="product-recipe-review" />
+            </container>
+        </referenceContainer>
+
+        <move element="page.main.title" destination="product.recipe.left" />
+        <move element="product.info.review" destination="product.recipe.left" />
+        <move element="product.info.overview" destination="product.recipe.left" />
+        <move element="product.info.media" destination="product.recipe.right" before="-" />
+        <move element="reviews.tab" destination="product.recipe.review" />
+        <referenceContainer name="product.info.main" remove="true"/>
+        <referenceContainer name="product.info.details" remove="true"/>
     </body>
 </page>
