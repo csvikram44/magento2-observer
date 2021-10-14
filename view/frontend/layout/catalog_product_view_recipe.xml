@@ -15,15 +15,18 @@
                 </container>
             </container>
             <container name="product.recipe.bottom" htmlTag="div" htmlClass="product-recipe-bottom">
-                <container name="product.recipe.review" htmlTag="div" htmlClass="product-recipe-review" />
+                <container name="product.recipe.review" htmlTag="div" htmlClass="product-recipe-review">
+                    <block class="Magento\Review\Block\Product\View\ListView" name="product.review.recipe" template="Magento_Review::product/view/list.phtml" ifconfig="catalog/review/active"/>
+                </container>
             </container>
         </referenceContainer>
 
         <move element="page.main.title" destination="product.recipe.left" />
-        <move element="product.info.review" destination="product.recipe.left" />
         <move element="product.info.overview" destination="product.recipe.left" />
+        <move element="product.info.description" destination="product.recipe.left" after="product.info.overview" />
+        <move element="product.info.review" destination="product.recipe.left" />
         <move element="product.info.media" destination="product.recipe.right" before="-" />
-        <move element="reviews.tab" destination="product.recipe.review" />
+        <move element="reviews.tab" destination="product.recipe.review" after="product.review.recipe" />
         <referenceContainer name="product.info.main" remove="true"/>
         <referenceContainer name="product.info.details" remove="true"/>
     </body>
